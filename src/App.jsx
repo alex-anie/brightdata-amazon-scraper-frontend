@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Navbar from "./components/Nabar";
 import MainContent from "./components/MainContent";
 import Sidebar from "./components/Sidebar";
 import ErrorPage from "./components/ErrorPage";
 import Footer from "./components/Footer";
 import axios from "axios";
+import SkeletonLoader from "./components/SkeletonLoader";
+
 
 function App() {
   const [data, setData] = useState([]);
@@ -43,7 +45,9 @@ function App() {
     <div className={`min-h-screen ${theme === "dark" ? "bg-slate-900 text-white" : "bg-slate-100"}`}>
       <Navbar onSearch={onSearch} toggleTheme={toggleTheme} theme={theme} />
       <div className="flex">
-        <MainContent data={data} loading={loading} />
+        <Suspense fallback={<SkeletonLoader />}>
+          <MainContent data={data} loading={loading} />
+        </Suspense>
         <Sidebar onSearchHistoryClick={onSearch} />
       </div>
       {error && <ErrorPage message={error} />}
