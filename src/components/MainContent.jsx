@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Pagination from './Pagination';
+import SkeletonLoader from './SkeletonLoader';
 
 const MainContent = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -43,19 +44,19 @@ const MainContent = () => {
   const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <div>
-      <div className="text-center">
+    <div className='w-[60%] mx-auto mt-10'>
+      <div className="text-center w-[100%]">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-gray-300 rounded w-[70%]"
         />
         <button onClick={handleSearch} className="bg-cyan-500 text-white px-4 py-2 rounded ml-2">
           Search
         </button>
       </div>
-
+     
       {error ? (
         <div className="text-red-500 mt-4">Error: {error}</div> // Display error
       ) : (
