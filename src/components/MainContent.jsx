@@ -61,7 +61,7 @@ const MainContent = () => {
       </div>
 
       <div>
-        <p className='text-center mt-2 text-slate-500 italic'>Search any product in the input field</p>
+        <p className='text-center mt-2 text-slate-500 italic'>Search any product in the input field and get immediate feedback from Brightdata</p>
       </div>
 
       {isLoading ? (
@@ -79,7 +79,7 @@ const MainContent = () => {
               <img src={item.imageCover} alt={item.title} className="w-full h-40 object-cover rounded" />
               <h2 className="font-semibold mt-2">{item.title}</h2>
               <p className="text-gray-500 mt-1">{item.price}</p>
-              <a href={item.url} className="text-cyan-500 hover:underline mt-2 block">
+              <a href={item.url} target='_blank' className="text-cyan-500 hover:underline mt-2 block">
                 View Product
               </a>
             </div>
